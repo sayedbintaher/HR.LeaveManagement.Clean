@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeave
         public async Task<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
             //validate incoming data
+            var validator = new UpdateLeaveTypeCommandValidator(_leaveTypeRepository);
+            var validationResult = await validator.ValidateAsync(request);
 
             //convert to domain entity object
             var leaveTypeToUpdate = _mapper.Map<Domain.LeaveType>(request);
