@@ -1,0 +1,23 @@
+﻿using HR.LeaveManagement.Application.Contracts.Email;
+using HR.LeaveManagement.Application.Models.Email;
+using HR.LeaveManagement.Infrastructure.EmailService;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace HR.LeaveManagement.Infrastructure
+{
+    public static class InfrastructureServicesRegistration
+    {
+        public static IServiceCollection ConfigureInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<EmailSettings>(options =>
+            {
+                options.ApiKey = configuration["EmailSettings:ApiKey"];
+                options.FromAddress = configuration["EmailSettings:FromAddress"];
+                options.FromName = configuration["EmailSettings:FromName"];
+            });
+            services.AddTransient<IEmailSender, EmailSender>();
+            return services;
+        }
+    }
+}
