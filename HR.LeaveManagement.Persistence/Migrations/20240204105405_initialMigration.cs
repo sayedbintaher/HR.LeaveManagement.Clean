@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HR.LeaveManagement.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class firstMigration : Migration
+    public partial class initialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -82,7 +82,7 @@ namespace HR.LeaveManagement.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
                 columns: new[] { "Id", "DateCreated", "DateModified", "DefaultDays", "Name" },
-                values: new object[] { 1, new DateTime(2024, 1, 31, 17, 42, 44, 670, DateTimeKind.Local).AddTicks(9691), new DateTime(2024, 1, 31, 17, 42, 44, 670, DateTimeKind.Local).AddTicks(9712), 10, "Vacation" });
+                values: new object[] { 1, new DateTime(2024, 2, 4, 16, 54, 4, 697, DateTimeKind.Local).AddTicks(7531), new DateTime(2024, 2, 4, 16, 54, 4, 697, DateTimeKind.Local).AddTicks(7545), 10, "Vacation" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveAllocations_LeaveTypeId",
